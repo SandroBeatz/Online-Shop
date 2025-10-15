@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { useProductStore } from '~/entities/product/model/productStore'
 import ProductCard from '~/entities/product/ui/ProductCard.vue'
-import CategoryCard from '~/entities/category/ui/CategoryCard.vue'
 import {HomeBanner} from "~/widgets/home-banner";
+import {HomeCategories} from "~/widgets/home-categories";
 
 const productStore = useProductStore()
 
 // Fetch products on mount
-const { data: categoriesData } = await useFetch('/api/categories')
+
 await productStore.fetchProducts({ limit: 15 })
 
-const categories = computed(() => categoriesData.value || [])
+
 const featuredProducts = computed(() => productStore.featuredProducts)
 const newArrivals = computed(() => productStore.newArrivals)
 
@@ -27,19 +27,11 @@ useHead({
 <template>
   <div>
     <!-- Hero Banner with Swiper -->
-    <section class="mb-12">
-      <HomeBanner/>
-    </section>
+    <HomeBanner class="mb-12"/>
+    <!-- Categories Section -->
+    <HomeCategories class="mb-12"/>
 
     <UContainer>
-      <!-- Categories Section -->
-      <section class="mb-16">
-        <h2 class="text-3xl font-bold mb-8">Shop by Category</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <CategoryCard v-for="category in categories" :key="category.id" :category="category" />
-        </div>
-      </section>
-
       <!-- Featured Products Section -->
       <section class="mb-16">
         <div class="flex items-center justify-between mb-8">
