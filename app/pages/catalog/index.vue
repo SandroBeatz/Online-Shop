@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useProductStore } from '~/entities/product/model/productStore'
-import ProductList from '~/widgets/product-list/ui/ProductList.vue'
 import ProductFilters from '~/features/product-filters/ui/ProductFilters.vue'
 import SearchBar from '~/features/search-products/ui/SearchBar.vue'
 import { SORT_OPTIONS, PRICE_RANGES } from '~/shared/config/constants'
+import {ProductList} from "~/widgets/product-list";
 
 const productStore = useProductStore()
 const route = useRoute()

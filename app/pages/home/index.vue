@@ -2,7 +2,7 @@
 import { useProductStore } from '~/entities/product/model/productStore'
 import ProductCard from '~/entities/product/ui/ProductCard.vue'
 import CategoryCard from '~/entities/category/ui/CategoryCard.vue'
-import HomeBanner from "~/widgets/home-banner/ui/HomeBanner.vue";
+import {HomeBanner} from "~/widgets/home-banner";
 
 const productStore = useProductStore()
 

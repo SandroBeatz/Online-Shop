@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCartStore } from '~/entities/cart/model/cartStore'
 import CheckoutForm from '~/features/checkout-form/ui/CheckoutForm.vue'
-import CartSummary from '~/widgets/cart-summary/ui/CartSummary.vue'
+import CartSummary from '../../widgets/cart-summary/ui/CartSummary.vue'
 import type { OrderCustomer, DeliveryMethod, PaymentMethod } from '~/entities/order/model/types'
 
 const cartStore = useCartStore()
