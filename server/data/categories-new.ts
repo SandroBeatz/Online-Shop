@@ -8,49 +8,49 @@ import type { Category } from '../types/entities'
 export const mockCategoriesNew: Category[] = [
   {
     id: 1,
-    name: 'Men',
+    name: 'Мужчинам',
     slug: 'men',
-    description: 'Modern fashion and essentials for men. Discover stylish clothing, shoes, and accessories.',
+    description: 'Современная мода и базовые вещи для мужчин. Откройте для себя стильную одежду, обувь и аксессуары.',
     image: 'https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=800',
     parent_id: null // Root category
   },
   {
     id: 2,
-    name: 'Women',
+    name: 'Женщинам',
     slug: 'women',
-    description: 'Elegant and trendy fashion for women. From casual wear to evening dresses.',
+    description: 'Элегантная и трендовая мода для женщин. От повседневной одежды до вечерних платьев.',
     image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800',
     parent_id: null // Root category
   },
   {
     id: 3,
-    name: 'Kids',
+    name: 'Детям',
     slug: 'kids',
-    description: 'Comfortable and playful clothing for children of all ages.',
+    description: 'Удобная и яркая одежда для детей всех возрастов.',
     image: 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=800',
     parent_id: null // Root category
   },
   {
     id: 4,
-    name: 'Shoes',
+    name: 'Обувь',
     slug: 'shoes',
-    description: 'Step up your style with our collection of footwear for every occasion.',
+    description: 'Поднимите свой стиль на новый уровень с нашей коллекцией обуви для любого случая.',
     image: 'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800',
     parent_id: null // Root category
   },
   {
     id: 5,
-    name: 'Accessories',
+    name: 'Аксессуары',
     slug: 'accessories',
-    description: 'Complete your look with bags, jewelry, watches, and more.',
+    description: 'Завершите свой образ сумками, украшениями, часами и многим другим.',
     image: 'https://images.unsplash.com/photo-1492707892479-7bc8d5a4ee93?w=800',
     parent_id: null // Root category
   },
   {
     id: 6,
-    name: 'Sale',
+    name: 'Распродажа',
     slug: 'sale',
-    description: 'Amazing deals and discounts on selected items. Limited time offers!',
+    description: 'Невероятные скидки на избранные товары. Предложения ограничены по времени!',
     image: 'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800',
     parent_id: null // Root category
   }

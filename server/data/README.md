@@ -2,6 +2,8 @@
 
 This directory contains comprehensive mock data for the e-commerce application. All data is structured following TypeScript interfaces defined in `../types/entities.ts`.
 
+**Language**: All user-facing text content (names, descriptions, comments) is in **Russian**.
+
 ## Overview
 
 The mock database consists of 6 interconnected entities that simulate a realistic e-commerce environment:
@@ -21,12 +23,12 @@ The mock database consists of 6 interconnected entities that simulate a realisti
 
 Main fashion departments with hierarchical support:
 
-1. **Men** - Modern fashion and essentials for men
-2. **Women** - Elegant and trendy fashion for women
-3. **Kids** - Comfortable and playful clothing for children
-4. **Shoes** - Footwear for every occasion
-5. **Accessories** - Bags, jewelry, watches, and more
-6. **Sale** - Discounted items
+1. **Мужчинам** (Men) - Современная мода и базовые вещи для мужчин
+2. **Женщинам** (Women) - Элегантная и трендовая мода для женщин
+3. **Детям** (Kids) - Удобная и яркая одежда для детей
+4. **Обувь** (Shoes) - Обувь для любого случая
+5. **Аксессуары** (Accessories) - Сумки, украшения, часы и многое другое
+6. **Распродажа** (Sale) - Товары со скидкой
 
 **Fields**:
 - `id`: Unique identifier
@@ -50,11 +52,11 @@ Main fashion departments with hierarchical support:
 
 Curated product groups for marketing and seasonal promotions:
 
-1. **Summer 2025** - Light and vibrant summer styles
-2. **New Arrivals** - Latest fashion finds
-3. **Best Sellers** - Customer favorites
-4. **Winter Collection** - Cozy winter essentials
-5. **Urban Style** - Street-smart contemporary fashion
+1. **Лето 2025** (Summer 2025) - Легкие и яркие летние стили
+2. **Новинки** (New Arrivals) - Последние модные находки
+3. **Хиты продаж** (Best Sellers) - Любимые товары покупателей
+4. **Зимняя коллекция** (Winter Collection) - Уютная зимняя одежда
+5. **Городской стиль** (Urban Style) - Умная уличная мода
 
 **Fields**:
 - `id`: Unique identifier
@@ -76,12 +78,12 @@ Curated product groups for marketing and seasonal promotions:
 Diverse product catalog across all categories:
 
 **Distribution by Category**:
-- Men (category_id: 1): 5 products
-- Women (category_id: 2): 5 products
-- Kids (category_id: 3): 5 products
-- Shoes (category_id: 4): 5 products
-- Accessories (category_id: 5): 5 products
-- Sale (category_id: 6): 5 products
+- Мужчинам / Men (category_id: 1): 5 products
+- Женщинам / Women (category_id: 2): 5 products
+- Детям / Kids (category_id: 3): 5 products
+- Обувь / Shoes (category_id: 4): 5 products
+- Аксессуары / Accessories (category_id: 5): 5 products
+- Распродажа / Sale (category_id: 6): 5 products
 
 **Fields**:
 - `id`: Unique identifier
@@ -210,14 +212,14 @@ ProductVariant (1) ----< (many) Size
 ### Example Product Hierarchy
 
 ```
-Product: Classic White Oxford Shirt
-├── Category: Men
+Product: Классическая белая рубашка Оксфорд (Classic White Oxford Shirt)
+├── Category: Мужчинам (Men)
 ├── Variants:
-│   ├── White (#FFFFFF)
+│   ├── Белый / White (#FFFFFF)
 │   │   └── Sizes: S(15), M(25), L(20), XL(12), XXL(8)
-│   ├── Light Blue (#ADD8E6)
+│   ├── Светло-голубой / Light Blue (#ADD8E6)
 │   │   └── Sizes: S(10), M(18), L(15), XL(10)
-│   └── Pink (#FFC0CB)
+│   └── Розовый / Pink (#FFC0CB)
 │       └── Sizes: S(8), M(12), L(10)
 └── Reviews: 3 reviews (avg 4.7 stars)
 ```
@@ -274,9 +276,9 @@ All relationships are properly maintained:
 // GET /api/products/1
 {
   id: 1,
-  title: "Classic White Oxford Shirt",
+  title: "Классическая белая рубашка Оксфорд",
   slug: "classic-white-oxford-shirt",
-  description: "...",
+  description: "Вневременная белая рубашка Оксфорд из премиального хлопка...",
   category_id: 1,
   base_price: 59.99,
   is_featured: true,
@@ -323,7 +325,9 @@ Potential additions for v2:
 ## Notes
 
 - All data is generated for demonstration purposes
+- All user-facing text (names, titles, descriptions, comments, author names) is in **Russian**
 - Email addresses use `@example.com` domain
 - Dates are in ISO 8601 format
 - All monetary values in USD
 - Images are publicly accessible via Unsplash
+- Slugs remain in English for URL compatibility
