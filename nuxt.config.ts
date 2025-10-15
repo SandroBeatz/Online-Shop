@@ -9,5 +9,21 @@ export default defineNuxtConfig({
     '@nuxt/test-utils',
     '@nuxt/scripts',
     '@nuxt/eslint'
-  ]
+  ],
+
+  css: ['~/app/assets/css/main.css'],
+
+  hooks: {
+    'pages:extend'(pages) {
+      // For Home page set path to '/' instead of '/home'
+      const homeIndex = pages.find(page => page.path === '/home')
+      if (homeIndex) {
+        homeIndex.path = '/'
+      }
+    }
+  },
+
+  components: [
+    { path: '~/app/ui', prefix: 'App', extensions: ['.vue', '.ts'] },
+  ],
 })
