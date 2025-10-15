@@ -8,7 +8,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/test-utils',
     '@nuxt/scripts',
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@pinia/nuxt',
+    'nuxt-swiper'
   ],
 
   css: ['~/app/assets/css/main.css'],
