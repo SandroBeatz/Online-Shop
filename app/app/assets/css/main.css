@@ -1,2 +1,34 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+
+:root {
+    --ui-text-dimmed: var(--color-zinc-400);
+    --ui-text-muted: var(--uolor-zinc-500);
+    --ui-text-toned: var(--color-zinc-600);
+    --ui-text: var(--color-zinc-700);
+    --ui-text-highlighted: var(--color-zinc-900);
+    --ui-text-inverted: var(--color-white);
+
+    --ui-bg: var(--color-white);
+    --ui-bg-muted: var(--color-zinc-50);
+    --ui-bg-elevated: var(--color-zinc-100);
+    --ui-bg-accented: var(--color-zinc-200);
+    --ui-bg-inverted: var(--color-zinc-900);
+}
+
+.dark {
+    --ui-text-dimmed: var(--color-zinc-500);
+    --ui-text-muted: var(--color-zinc-400);
+    --ui-text-toned: var(--color-zinc-300);
+    --ui-text: var(--color-zinc-200);
+    --ui-text-highlighted: var(--color-white);
+    --ui-text-inverted: var(--color-zinc-900);
+
+    --ui-bg: var(--color-zinc-900);
+    --ui-bg-muted: var(--color-zinc-800);
+    --ui-bg-elevated: var(--color-zinc-800);
+    --ui-bg-accented: var(--color-zinc-700);
+    --ui-bg-inverted: var(--color-white);
+}
+
