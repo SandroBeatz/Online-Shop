@@ -3,6 +3,8 @@
 
 
 :root {
+    --ui-primary: var(--color-zinc-900);
+
     --ui-text-dimmed: var(--color-zinc-400);
     --ui-text-muted: var(--uolor-zinc-500);
     --ui-text-toned: var(--color-zinc-600);
@@ -15,9 +17,16 @@
     --ui-bg-elevated: var(--color-zinc-100);
     --ui-bg-accented: var(--color-zinc-200);
     --ui-bg-inverted: var(--color-zinc-900);
+
+    --ui-border: var(--color-zinc-200);
+    --ui-border-muted: var(--color-zinc-200);
+    --ui-border-accented: var(--color-zinc-300);
+    --ui-border-inverted: var(--color-zinc-900);
 }
 
 .dark {
+    --ui-primary: var(--color-zinc-900);
+
     --ui-text-dimmed: var(--color-zinc-500);
     --ui-text-muted: var(--color-zinc-400);
     --ui-text-toned: var(--color-zinc-300);
@@ -30,5 +39,10 @@
     --ui-bg-elevated: var(--color-zinc-800);
     --ui-bg-accented: var(--color-zinc-700);
     --ui-bg-inverted: var(--color-white);
+
+    --ui-border: var(--color-zinc-800);
+    --ui-border-muted: var(--color-zinc-700);
+    --ui-border-accented: var(--color-zinc-700);
+    --ui-border-inverted: var(--color-white);
 }
 

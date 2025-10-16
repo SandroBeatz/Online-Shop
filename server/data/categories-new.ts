@@ -2,7 +2,7 @@ import type { Category } from '../types/entities'
 
 /**
  * Mock Categories Data
- * 6 categories representing main fashion departments
+ * 9 categories representing main fashion departments
  * Some categories have parent relationships for hierarchical navigation
  */
 export const mockCategoriesNew: Category[] = [
@@ -53,6 +53,30 @@ export const mockCategoriesNew: Category[] = [
     description: 'Невероятные скидки на избранные товары. Предложения ограничены по времени!',
     image: 'https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=800',
     parent_id: null // Root category
+  },
+  {
+    id: 7,
+    name: 'Спорт',
+    slug: 'sports',
+    description: 'Спортивная одежда и экипировка для активного образа жизни. Тренируйтесь с комфортом и стилем.',
+    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800',
+    parent_id: null // Root category
+  },
+  {
+    id: 8,
+    name: 'Верхняя одежда',
+    slug: 'outerwear',
+    description: 'Куртки, пальто и верхняя одежда для любого сезона. Защита от непогоды в стильном исполнении.',
+    image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800',
+    parent_id: null // Root category
+  },
+  {
+    id: 9,
+    name: 'Белье и домашняя одежда',
+    slug: 'loungewear',
+    description: 'Комфортное белье и одежда для дома. Расслабьтесь в мягких тканях и удобных фасонах.',
+    image: 'https://images.unsplash.com/photo-1631149863874-9db2e219c56a?w=800',
+    parent_id: null // Root category
   }
 ]
 
@@ -82,4 +106,12 @@ export function getRootCategories(): Category[] {
  */
 export function getChildCategories(parentId: number): Category[] {
   return mockCategoriesNew.filter(cat => cat.parent_id === parentId)
+}
+
+/**
+ * Helper function to get categories for homepage (4 by id)
+ */
+export function getHomepageCategories(): Category[] {
+    const homepageCategoryIds = [8, 7, 4, 5]
+    return mockCategoriesNew.filter(cat => homepageCategoryIds.includes(cat.id))
 }

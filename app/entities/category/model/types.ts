@@ -1,6 +1,10 @@
+export type CategoryId = number
+
 export interface Category {
-  id: string
+  id: CategoryId
   name: string
   slug: string
-  description?: string
+  description: string
+  image: string
+  parent_id: Nullable<CategoryId>
 }

@@ -28,4 +28,8 @@ export default defineNuxtConfig({
   components: [
     { path: '~/app/ui', prefix: 'App', extensions: ['.vue', '.ts'] },
   ],
+
+  imports: {
+    dirs: ['~/shared/composables', '~/shared/types'],
+  },
 })

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import CategoryCard from "~/entities/category/ui/CategoryCard.vue";
 
-const { data: categoriesData } = await useFetch('/api/categories')
+const { data: categoriesData } = await useFetch('/api/categories/home')
 const categories = computed(() => categoriesData.value || [])
 </script>
 
