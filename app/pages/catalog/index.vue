@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { useProductStore } from '~/entities/product/model/productStore'
+import {useProductStore} from '~/entities/product/model/productStore'
 import ProductFilters from '~/features/product-filters/ui/ProductFilters.vue'
 import SearchBar from '~/features/search-products/ui/SearchBar.vue'
-import { SORT_OPTIONS, PRICE_RANGES } from '~/shared/config/constants'
+import {SORT_OPTIONS, PRICE_RANGES} from '~/shared/config/constants'
 import {ProductList} from "~/widgets/product-list";
+import type {ProductItem, ProductItemsResponse} from "~/entities/product";
 
 const productStore = useProductStore()
 const route = useRoute()
 const router = useRouter()
 
 // Fetch categories for filters
-const { data: categoriesData } = await useFetch('/api/categories')
+const {data: categoriesData} = await useFetch('/api/categories')
 const categories = computed(() => categoriesData.value || [])
 
 // Filters and search state
@@ -21,6 +22,7 @@ const filters = ref({
 })
 const sortOption = ref((route.query.sort as string) || 'newest')
 const currentPage = ref(Number(route.query.page) || 1)
+const REFETCH_COUNT = ref(1)
 
 // Watch for query changes
 watch(() => route.query, (newQuery) => {
@@ -28,8 +30,8 @@ watch(() => route.query, (newQuery) => {
   filters.value.category = (newQuery.category as string) || 'all'
   sortOption.value = (newQuery.sort as string) || 'newest'
   currentPage.value = Number(newQuery.page) || 1
-  fetchProducts()
-}, { deep: true })
+  // fetchProducts()
+}, {deep: true})
 
 // Fetch products based on current filters
 const fetchProducts = async () => {
@@ -52,35 +54,44 @@ const fetchProducts = async () => {
 const updateQuery = () => {
   router.push({
     query: {
-      ...(searchQuery.value && { search: searchQuery.value }),
-      ...(filters.value.category !== 'all' && { category: filters.value.category }),
-      ...(sortOption.value !== 'newest' && { sort: sortOption.value }),
-      ...(currentPage.value > 1 && { page: currentPage.value.toString() })
+      ...(searchQuery.value && {search: searchQuery.value}),
+      ...(filters.value.category !== 'all' && {category: filters.value.category}),
+      ...(sortOption.value !== 'newest' && {sort: sortOption.value}),
+      ...(currentPage.value > 1 && {page: currentPage.value.toString()})
     }
   })
 }
 
 // Watch filters and trigger query update
 watch([filters, sortOption, searchQuery], () => {
+  REFETCH_COUNT.value++
   currentPage.value = 1
   updateQuery()
-}, { deep: true })
+}, {deep: true})
+
+const {data: productsData, status} = await useAsyncData<ProductItemsResponse>(
+    `category-${filters.value.category}`,
+    () => $fetch(`/api/product-variants?category_slug=${filters.value.category}`), {
+      watch: [REFETCH_COUNT],
+    }
+)
+const products: ComputedRef<ProductItem[]> = computed(() => productsData.value?.variants || [])
 
 // Pagination
 const goToPage = (page: number) => {
   currentPage.value = page
   updateQuery()
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({top: 0, behavior: 'smooth'})
 }
 
 // Initial fetch
-await fetchProducts()
+// await fetchProducts()
 
 // SEO
 useHead({
   title: 'Catalog - Browse Our Products',
   meta: [
-    { name: 'description', content: 'Browse our wide selection of products. Filter by category, price, and more.' }
+    {name: 'description', content: 'Browse our wide selection of products. Filter by category, price, and more.'}
   ]
 })
 </script>
@@ -95,7 +106,7 @@ useHead({
 
     <!-- Search Bar -->
     <div class="mb-8">
-      <SearchBar v-model:search-query="searchQuery" />
+      <SearchBar v-model:search-query="searchQuery"/>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
@@ -105,7 +116,7 @@ useHead({
           <template #header>
             <h2 class="text-xl font-bold">Filters</h2>
           </template>
-          <ProductFilters v-model:filters="filters" :categories="categories" />
+          <ProductFilters v-model:filters="filters" :categories="categories"/>
         </UCard>
       </aside>
 
@@ -117,23 +128,23 @@ useHead({
             {{ productStore.total }} product{{ productStore.total !== 1 ? 's' : '' }} found
           </p>
           <USelect
-            v-model="sortOption"
-            :options="SORT_OPTIONS"
-            size="md"
-            class="w-48"
+              v-model="sortOption"
+              :options="SORT_OPTIONS"
+              size="md"
+              class="w-48"
           />
         </div>
 
         <!-- Products List -->
-        <ProductList :products="productStore.products" :loading="productStore.loading" />
+        <ProductList :products="products" :loading="status === 'pending'"/>
 
         <!-- Pagination -->
         <div v-if="productStore.totalPages > 1" class="flex justify-center mt-8">
           <UPagination
-            v-model="currentPage"
-            :total="productStore.total"
-            :page-count="10"
-            @update:model-value="goToPage"
+              v-model="currentPage"
+              :total="productStore.total"
+              :page-count="10"
+              @update:model-value="goToPage"
           />
         </div>
       </main>

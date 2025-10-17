@@ -31,7 +31,7 @@ const priceRangeOptions = computed(() =>
       <h3 class="font-semibold text-lg mb-3">Category</h3>
       <URadioGroup
         v-model="filters.category"
-        :options="categoryOptions"
+        :items="categoryOptions"
       />
     </div>
 
@@ -39,7 +39,7 @@ const priceRangeOptions = computed(() =>
       <h3 class="font-semibold text-lg mb-3">Price Range</h3>
       <URadioGroup
         v-model="filters.priceRange"
-        :options="priceRangeOptions"
+        :items="priceRangeOptions"
       />
     </div>
   </div>

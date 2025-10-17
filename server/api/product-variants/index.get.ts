@@ -1,6 +1,7 @@
 import { mockVariants, getSizesByVariantId, getVariantsByProductId } from '../../data/variants-and-sizes'
 import { getProductById } from '../../data/products-new'
 import type { ProductVariant, VariantWithSizes, Product } from '../../types/entities'
+import {getCategoryBySlug} from "~~/server/data/categories-new";
 
 /**
  * Extended variant with full product and all variants
@@ -32,6 +33,19 @@ export default defineEventHandler((event) => {
   const query = getQuery(event)
 
   let filteredVariants: ProductVariant[] = [...mockVariants]
+
+  // Filter by category_slug through product relation
+  if (query.category_slug) {
+    const category = getCategoryBySlug(String(query.category_slug))
+
+    if(category) {
+      const categoryId = Number(category.id)
+      filteredVariants = filteredVariants.filter(v => {
+        const product = getProductById(v.product_id)
+        return product && product.category_id === categoryId
+      })
+    }
+  }
 
   // Filter by category_id through product relation
   if (query.category_id) {

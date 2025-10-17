@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import type { Product } from '~/entities/product/model/types'
-import ProductCard from '~/entities/product/ui/ProductCard.vue'
+import {ProductCard, type ProductItem} from "~/entities/product";
 
 interface Props {
-  products: Product[]
+  products: ProductItem[]
   loading?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   loading: false
 })
+
+const productsUI = computed(() => props.products.map(i => ({
+  title: i.product.title,
+  price: i.price,
+  imageUrl: i.gallery[0] || '',
+  to: `/product/${i.id}`
+})))
 </script>
 
 <template>
@@ -24,8 +30,8 @@ const props = withDefaults(defineProps<Props>(), {
       <p class="text-gray-500 mt-2">Try adjusting your filters or search query</p>
     </div>
 
-    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <ProductCard v-for="product in products" :key="product.id" :product="product" />
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ProductCard v-for="product in productsUI" :key="product.to" v-bind="product" />
     </div>
   </div>
 </template>
