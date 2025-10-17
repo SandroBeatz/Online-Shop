@@ -122,7 +122,7 @@ export const mockVariants: ProductVariant[] = [
     color_name: 'Charcoal',
     color_hex: '#36454F',
     price: 189.99,
-    gallery: ['https://images.unsplash.com/photo-1592878821245-fcb98bef6b10?w=800']
+    gallery: ['https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800']
   },
   {
     id: 12,
@@ -224,7 +224,7 @@ export const mockVariants: ProductVariant[] = [
     color_name: 'White',
     color_hex: '#FFFFFF',
     price: 74.99,
-    gallery: ['https://images.unsplash.com/photo-1564257577220-2b8c5ff84c77?w=800']
+    gallery: ['https://images.unsplash.com/photo-1551028719-00167b16eac5?w=800']
   },
   {
     id: 22,
@@ -233,7 +233,7 @@ export const mockVariants: ProductVariant[] = [
     color_name: 'Black',
     color_hex: '#000000',
     price: 74.99,
-    gallery: ['https://images.unsplash.com/photo-1585487000143-c2f283c17541?w=800']
+    gallery: ['https://images.unsplash.com/photo-1596783074918-c84cb06531ca?w=800']
   },
   {
     id: 23,
@@ -280,7 +280,7 @@ export const mockVariants: ProductVariant[] = [
     color_name: 'Grey',
     color_hex: '#808080',
     price: 149.99,
-    gallery: ['https://images.unsplash.com/photo-1609102026391-e4f9df1bed17?w=800']
+    gallery: ['https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?w=800']
   },
 
   // Product 10 - Wide Leg Trousers (2 variants)
@@ -324,8 +324,21 @@ function generateRemainingVariants(): ProductVariant[] {
     { id: 15, colors: [{ name: 'Navy', hex: '#000080' }, { name: 'Grey', hex: '#808080' }] }
   ]
 
-  kidProducts.forEach(prod => {
-    prod.colors.forEach(color => {
+  const kidImages = [
+    'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?w=800', // Rainbow
+    'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=800', // Blue
+    'https://images.unsplash.com/photo-1596870230751-ebdfce98ec42?w=800', // Classic Blue
+    'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?w=800', // Black
+    'https://images.unsplash.com/photo-1514090458221-65bb69cf63e4?w=800', // Pink
+    'https://images.unsplash.com/photo-1622290219658-556f819c7bc4?w=800', // Blue
+    'https://images.unsplash.com/photo-1519238355615-5de2dd8c1e11?w=800', // Multi
+    'https://images.unsplash.com/photo-1503944583220-79d8926ad5e3?w=800', // White
+    'https://images.unsplash.com/photo-1596870230668-4c7f73733f68?w=800', // Navy
+    'https://images.unsplash.com/photo-1519278409-312f7d613c94?w=800'  // Grey
+  ]
+
+  kidProducts.forEach((prod, index) => {
+    prod.colors.forEach((color, colorIndex) => {
       variants.push({
         id: variantId++,
         product_id: prod.id,
@@ -333,7 +346,7 @@ function generateRemainingVariants(): ProductVariant[] {
         color_name: color.name,
         color_hex: color.hex,
         price: 29.99 + Math.random() * 20,
-        gallery: [`https://images.unsplash.com/photo-${1500000000000 + prod.id * 100000}-${color.name.toLowerCase()}?w=800`]
+        gallery: [kidImages[index * 2 + colorIndex] || kidImages[0]]
       })
     })
   })
@@ -347,8 +360,21 @@ function generateRemainingVariants(): ProductVariant[] {
     { id: 20, colors: [{ name: 'Navy', hex: '#000080' }, { name: 'Brown', hex: '#8B4513' }] }
   ]
 
-  shoeProducts.forEach(prod => {
-    prod.colors.forEach(color => {
+  const shoeImages = [
+    'https://images.unsplash.com/photo-1549298916-b41d501d3772?w=800', // Brown
+    'https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=800', // Black
+    'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=800', // White
+    'https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=800', // Navy
+    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800', // Black/Red
+    'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=800', // Blue/White
+    'https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=800', // Black
+    'https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=800', // Tan
+    'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=800', // Navy
+    'https://images.unsplash.com/photo-1582897085656-c636d006a246?w=800'  // Brown
+  ]
+
+  shoeProducts.forEach((prod, index) => {
+    prod.colors.forEach((color, colorIndex) => {
       variants.push({
         id: variantId++,
         product_id: prod.id,
@@ -356,7 +382,7 @@ function generateRemainingVariants(): ProductVariant[] {
         color_name: color.name,
         color_hex: color.hex,
         price: 79.99 + Math.random() * 50,
-        gallery: [`https://images.unsplash.com/photo-${1520000000000 + prod.id * 100000}?w=800`]
+        gallery: [shoeImages[index * 2 + colorIndex] || shoeImages[0]]
       })
     })
   })
@@ -370,8 +396,21 @@ function generateRemainingVariants(): ProductVariant[] {
     { id: 25, colors: [{ name: 'Black', hex: '#000000' }, { name: 'Brown', hex: '#8B4513' }] }
   ]
 
-  accessoryProducts.forEach(prod => {
-    prod.colors.forEach(color => {
+  const accessoryImages = [
+    'https://images.unsplash.com/photo-1627123424574-724758594e93?w=800', // Brown wallet
+    'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800', // Black wallet
+    'https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=800', // Gold watch
+    'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?w=800', // Silver watch
+    'https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=800', // Black bag
+    'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=800', // Brown bag
+    'https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?w=800', // Red scarf
+    'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=800', // Blue scarf
+    'https://images.unsplash.com/photo-1599000373844-0f8ec8eb647b?w=800', // Black belt
+    'https://images.unsplash.com/photo-1624222247344-550fb60583c2?w=800'  // Brown belt
+  ]
+
+  accessoryProducts.forEach((prod, index) => {
+    prod.colors.forEach((color, colorIndex) => {
       variants.push({
         id: variantId++,
         product_id: prod.id,
@@ -379,7 +418,7 @@ function generateRemainingVariants(): ProductVariant[] {
         color_name: color.name,
         color_hex: color.hex,
         price: 39.99 + Math.random() * 90,
-        gallery: [`https://images.unsplash.com/photo-${1540000000000 + prod.id * 100000}?w=800`]
+        gallery: [accessoryImages[index * 2 + colorIndex] || accessoryImages[0]]
       })
     })
   })
@@ -393,8 +432,21 @@ function generateRemainingVariants(): ProductVariant[] {
     { id: 30, colors: [{ name: 'Natural', hex: '#F5F5DC' }, { name: 'Black', hex: '#000000' }] }
   ]
 
-  saleProducts.forEach(prod => {
-    prod.colors.forEach(color => {
+  const saleImages = [
+    'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800', // Blue clothing
+    'https://images.unsplash.com/photo-1554568218-0f1715e72254?w=800', // Red clothing
+    'https://images.unsplash.com/photo-1618354691551-44de113f0164?w=800', // Red item
+    'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=800', // Green item
+    'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800', // Navy
+    'https://images.unsplash.com/photo-1503341504253-dff4815485f1?w=800', // Black
+    'https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=800', // Grey
+    'https://images.unsplash.com/photo-1562157873-818bc0726f68?w=800', // Black item
+    'https://images.unsplash.com/photo-1544816155-12df9643f363?w=800', // Natural
+    'https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800'  // Black blazer
+  ]
+
+  saleProducts.forEach((prod, index) => {
+    prod.colors.forEach((color, colorIndex) => {
       variants.push({
         id: variantId++,
         product_id: prod.id,
@@ -402,7 +454,7 @@ function generateRemainingVariants(): ProductVariant[] {
         color_name: color.name,
         color_hex: color.hex,
         price: 19.99 + Math.random() * 45,
-        gallery: [`https://images.unsplash.com/photo-${1560000000000 + prod.id * 100000}?w=800`]
+        gallery: [saleImages[index * 2 + colorIndex] || saleImages[0]]
       })
     })
   })
