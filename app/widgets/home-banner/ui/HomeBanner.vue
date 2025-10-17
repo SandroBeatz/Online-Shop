@@ -41,7 +41,7 @@ const heroSlides = [
           :autoplay="{ delay: 5000, disableOnInteraction: false }"
           :pagination="{ clickable: true }"
           navigation
-          class="h-[400px] md:h-[500px]"
+          class="h-[400px] md:h-[500px] rounded-3xl"
       >
         <SwiperSlide v-for="(slide, index) in heroSlides" :key="index">
           <div class="relative h-full">

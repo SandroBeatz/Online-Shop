@@ -31,9 +31,9 @@ useHead({
 </script>
 
 <template>
-  <div>
+  <div class="py-6">
     <!-- Hero Banner with Swiper -->
-<!--    <HomeBanner class="mb-12"/>-->
+    <HomeBanner class="mb-12"/>
     <!-- Categories Section -->
     <HomeCategories class="mb-12"/>
 <!--    <pre>{{featuredProducts}}</pre>-->

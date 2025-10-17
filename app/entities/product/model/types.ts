@@ -1,5 +1,8 @@
+export type ProductId = number
+export type ProductVariantId = number
+
 export interface Product {
-    id: number
+    id: ProductId
     title: string
     slug: string
     description: string
@@ -9,15 +12,8 @@ export interface Product {
     publishedAt: string // ISO date string
 }
 
-export type ProductItem = ProductVariant & {
-    product: Product & {
-        variants: ProductVariant[]
-    }
-    totalStock: number
-}
-
 export interface ProductVariant {
-    id: number
+    id: ProductVariantId
     product_id: number
     sku: string // Stock Keeping Unit (unique identifier)
     color_name: string
@@ -32,6 +28,28 @@ export interface Size {
     variant_id: number
     label: string // Size label (e.g., "S", "M", "L", "XL")
     quantity: number // Stock quantity
+}
+
+export type ProductItem = ProductVariant & {
+    product: Product & {
+        variants: ProductVariant[]
+    }
+    totalStock: number
+}
+
+export interface ProductItemsResponse {
+    variants: ProductItem[]
+    total: number
+    page: number
+    limit: number
+    totalPages: number
+}
+
+export interface ProductCardProps {
+    imageUrl: string
+    title: string
+    price: number
+    to: string
 }
 
 export interface ProductFilters {
