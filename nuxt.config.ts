@@ -10,10 +10,17 @@ export default defineNuxtConfig({
     '@nuxt/scripts',
     '@nuxt/eslint',
     '@pinia/nuxt',
-    'nuxt-swiper'
+    'nuxt-swiper',
+    '@nuxtjs/google-fonts',
   ],
 
   css: ['~/app/assets/css/main.css'],
+
+  googleFonts: {
+    families: {
+      Nunito: true
+    }
+  },
 
   hooks: {
     'pages:extend'(pages) {
